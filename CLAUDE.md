@@ -20,6 +20,11 @@ Python 3.12, SQLite (WAL mode), SQLAlchemy and Alembic, pytest, ruff. Use the pr
 - Lint: `.\.venv\Scripts\python.exe -m ruff check .`
 - All checks: `.\.venv\Scripts\python.exe -m pre_commit run --all-files`
 
+In a cloud session (a Linux machine, not Windows), the PowerShell commands above do not apply. Use:
+`python -m pip install -e ".[dev]"`, then `pytest`, `ruff check .` and `pre-commit run --all-files`.
+Cloud sessions cannot test Windows-specific behavior, run Ollama, or open the dashboard on the user's machine, so
+keep that work for local sessions. Always work on a branch and push it; never push to `qc` or `main`.
+
 ## Git workflow
 - Branches: `main` (production), `qc` (testing), `dev` (daily work). Work on `dev`, or on a short-lived
   `feature/<short-name>` branch created from `dev` for a single problem.
