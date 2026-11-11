@@ -16,8 +16,9 @@ Windows, from PowerShell in this folder:
 
 This creates a virtual environment, installs the tools, turns on the pre-commit safety checks and runs the tests.
 
-Branches: `main` (production), `qc` (testing) and `dev` (daily work). Merges into `qc` and `main` go through pull
-requests, and the CI workflow (`.github/workflows/ci.yml`) runs the checks and tests on every pull request.
+Branches: `main` (production), `qc` (full quality-control testing) and `dev` (integration). Work happens on short-lived
+branches that merge into `dev`, then `qc`, then `main`, always through pull requests. The CI workflow
+(`.github/workflows/ci.yml`) runs the checks and tests on every pull request.
 
 Install instructions for end users will be written later.
 
