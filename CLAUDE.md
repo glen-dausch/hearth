@@ -30,6 +30,9 @@ keep that work for local sessions. Always work on a branch and push it; never pu
   `feature/<short-name>` branch created from `dev` for a single problem.
 - Commit small and often with clear messages. Before each commit, tests and pre-commit must pass.
 - Moving work up (`dev` to `qc` to `main`) is done by the user through pull requests. Tell the user when a branch is ready.
+- Do not change `CLAUDE.md`, `docs/SPEC.md` or `docs/decisions.md` from a feature branch unless the task is about them.
+  Shared instructions change on `dev` first, so every branch started afterward inherits them. If they need changing,
+  tell the user.
 
 ## Database rules
 1. SQLite in WAL mode with a busy timeout and synchronous=NORMAL.
