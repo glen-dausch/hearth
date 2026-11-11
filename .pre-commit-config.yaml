@@ -1,14 +1,14 @@
 # Runs automatically before every commit. Versions are pinned; run `pre-commit autoupdate` occasionally.
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v6.0.0
     hooks:
       - id: detect-private-key        # blocks commits containing private keys (.pem contents etc.)
       - id: check-added-large-files
       - id: end-of-file-fixer
       - id: trailing-whitespace
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.6.9
+    rev: v0.17.4
     hooks:
       - id: ruff
         args: [--fix]
