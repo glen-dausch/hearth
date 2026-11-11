@@ -16,6 +16,9 @@ Windows, from PowerShell in this folder:
 
 This creates a virtual environment, installs the tools, turns on the pre-commit safety checks and runs the tests.
 
+Branches: `main` (production), `qc` (testing) and `dev` (daily work). Merges into `qc` and `main` go through pull
+requests, and the CI workflow (`.github/workflows/ci.yml`) runs the checks and tests on every pull request.
+
 Install instructions for end users will be written later.
 
 ## Layout
@@ -25,5 +28,7 @@ Install instructions for end users will be written later.
 | `src/hearth/` | The app |
 | `tests/` | Automated tests |
 | `docs/` | Decisions, spec, architecture, roadmap |
+| `CLAUDE.md` | Standing instructions for Claude Code |
 | `deploy/` | Docker, installer and monitoring (added later) |
+| `.github/workflows/` | Automatic checks that run on pull requests |
 | `scripts/` | Developer helper scripts |
