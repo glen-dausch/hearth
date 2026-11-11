@@ -1,0 +1,30 @@
+# Fails a pull request that skips a stage: main only accepts pull requests from qc, and qc only from dev.
+# After it has run once, require the check named "branch-flow" in the rulesets for qc and main (not dev).
+name: branch-flow
+
+on:
+  pull_request:
+    branches: [qc, main]
+
+permissions:
+  contents: read
+
+jobs:
+  branch-flow:
+    name: branch-flow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the source branch
+        env:
+          BASE_REF: ${{ github.base_ref }}
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          case "$BASE_REF" in
+            main) expected=qc ;;
+            qc) expected=dev ;;
+          esac
+          if [ "$HEAD_REF" != "$expected" ]; then
+            echo "Pull requests into $BASE_REF must come from $expected, not $HEAD_REF."
+            exit 1
+          fi
+          echo "OK: $HEAD_REF -> $BASE_REF"
