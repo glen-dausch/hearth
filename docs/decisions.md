@@ -27,10 +27,16 @@ Source of truth for what we have decided. Add a dated line whenever something ch
   timestamps, SQLAlchemy and Alembic so a later move to another database is possible. Rules are in `CLAUDE.md`.
 
 ## Process
-- **Branches:** `main` (production), `qc` (testing), `dev` (daily work). Short-lived branches for single problems
-  merge into `dev`.
-- **Pull requests:** Required for merges into `qc` and `main` (GitHub ruleset). The CI workflow runs the pre-commit
-  checks and the tests on every pull request into `dev`, `qc` or `main`.
+- **Branches:** `main` (production), `qc` (full quality-control testing), `dev` (integration: finished features land
+  here and are checked for major problems).
+- **Work flow:** All work happens on short-lived branches created from `dev` (`feature/`, `fix/`, `chore/`). A branch
+  merges into `dev` by pull request, `dev` into `qc` by pull request when a set of features is ready for a full check,
+  and `qc` into `main` by pull request when that check passes.
+- **Pull requests:** Required for merges into `dev`, `qc` and `main` (GitHub ruleset). The CI workflow runs the
+  pre-commit checks and the tests on every pull request into those branches.
+- **Claude Code and pull requests:** Claude Code opens a pull request only when asked, only into `dev` or `qc`,
+  never into `main`, and never merges.
+- **Tooling:** The user works in the Claude desktop app (Code tab).
 
 ## Revisit later
 - Risk rules (bankroll, per-trade cap, kill switch).
